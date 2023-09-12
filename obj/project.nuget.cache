@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "mCnFH02VJqd5Vj1K4KF6UgCZMy17yDUy+V5oxhqbiysPezxgkoeaLmIPV0y5/s3Z0PoPUjT6AWpwG7nKU5wufw==",
+  "dgSpecHash": "Z9A5g9ob5pJ5W38qIqnZI78S+4Uz6HiLZ8rfFRyLs7Og/NjHIqcnnKAXf8+eEN0AB9DkwYVC+BfoECo44EbHWA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\Documents\\LMS\\LMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.9\\microsoft.aspnetcore.openapi.7.0.9.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.10\\microsoft.aspnetcore.openapi.7.0.10.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",
