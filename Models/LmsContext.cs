@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Models;
 
-public partial class LMSContext : DbContext
+public partial class LmsContext : DbContext
 {
-    public LMSContext()
+    public LmsContext()
     {
     }
 
-    public LMSContext(DbContextOptions<LMSContext> options)
+    public LmsContext(DbContextOptions<LmsContext> options)
         : base(options)
     {
     }

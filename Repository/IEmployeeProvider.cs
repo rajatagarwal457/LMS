@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LMS.Services
+namespace LMS.Data
 {
-    public interface IAuthService
+    public interface IEmployeeProvider
     {
         public EmployeeCredential GetEmployeeDetail(EmployeeViewModel login);
         public Boolean RegisterEmployee(EmployeeMaster e);
-        public string GenerateJSONWebToken(EmployeeCredential employeeInfo);
-        public EmployeeCredential AuthenticateEmployee(EmployeeViewModel login);
     }
 }
