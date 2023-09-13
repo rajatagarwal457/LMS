@@ -15,7 +15,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(); 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IEmployeeLoanCardService, EmployeeLoanCardService>();
 builder.Services.AddScoped<EmployeeProvider>();
+builder.Services.AddScoped<LoanCardProvider>();
+
 
 var app = builder.Build();
 
