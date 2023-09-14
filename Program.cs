@@ -16,9 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IEmployeeLoanCardService, EmployeeLoanCardService>();
+builder.Services.AddScoped<IDisplayAllItemsPurchasedService, DisplayAllItemsPurchasedService>();
 builder.Services.AddScoped<EmployeeProvider>();
 builder.Services.AddScoped<LoanCardProvider>();
-
+builder.Services.AddScoped<ItemsPurchasedProvider>();
 
 var app = builder.Build();
 
