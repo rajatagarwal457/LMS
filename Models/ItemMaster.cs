@@ -5,7 +5,7 @@ namespace LMS.Models;
 
 public partial class ItemMaster
 {
-    public string ItemId { get; set; } = null!;
+    public Guid ItemId { get; set; }
 
     public string? IssueStatus { get; set; }
 
@@ -22,4 +22,6 @@ public partial class ItemMaster
     public virtual Category? ItemCategoryNavigation { get; set; }
 
     public virtual Material? ItemMakeNavigation { get; set; }
+
+    public virtual ICollection<LoanRequest> LoanRequests { get; set; } = new List<LoanRequest>();
 }

@@ -8,4 +8,6 @@ public partial class Material
     public string Material1 { get; set; } = null!;
 
     public virtual ICollection<ItemMaster> ItemMasters { get; set; } = new List<ItemMaster>();
+
+    public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
 }

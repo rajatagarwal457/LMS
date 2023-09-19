@@ -5,11 +5,13 @@ namespace LMS.Models;
 
 public partial class EmployeeCredential
 {
-    public string EmployeeId { get; set; } = null!;
+    public Guid? EmployeeId { get; set; }
+
+    public string EmployeeEmail { get; set; } = null!;
 
     public string EmployeePassword { get; set; } = null!;
 
-    public string EmployeeRole { get; set; } = null!;
+    public string? EmployeeRole { get; set; }
 
-    public virtual EmployeeMaster? EmployeeMaster { get; set; }
+    public virtual EmployeeMaster? Employee { get; set; }
 }

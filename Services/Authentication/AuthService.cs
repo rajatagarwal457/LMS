@@ -40,7 +40,7 @@ namespace LMS.Services
             List<Claim> claims = new List<Claim>();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            claims.Add(new Claim("Username", employeeInfo.EmployeeId));
+            claims.Add(new Claim("Username", employeeInfo.EmployeeEmail));
             if (employeeInfo.EmployeeRole.Equals("admin"))
             {
                 claims.Add(new Claim("role", "admin"));
