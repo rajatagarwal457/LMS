@@ -22,4 +22,6 @@ public partial class ItemMaster
     public virtual Category? ItemCategoryNavigation { get; set; }
 
     public virtual Material? ItemMakeNavigation { get; set; }
+
+    public virtual ICollection<LoanRequest> LoanRequests { get; set; } = new List<LoanRequest>();
 }

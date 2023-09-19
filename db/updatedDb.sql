@@ -1,6 +1,6 @@
-create database LMS1;
+create database LMS3;
 
-use LMS1;
+use LMS3;
 
 create table categories(
 category varchar(100) primary key,
@@ -15,16 +15,17 @@ create table category_material
     category varchar(100),
     material varchar(100),
     PRIMARY KEY (category, material),
-    FOREIGN KEY (category) REFERENCES categories(category),
-    FOREIGN KEY (material) REFERENCES materials(material)
+    FOREIGN KEY (category) REFERENCES categories(category) ON DELETE CASCADE,
+    FOREIGN KEY (material) REFERENCES materials(material) ON DELETE CASCADE
+
 );
 
 create table item_master (
 item_id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
 issue_status VARCHAR(8) CHECK (issue_status IN ('issued', 'waiting', 'rejected')),
 item_description varchar(25),
-item_make varchar(100) references materials(material),
-item_category varchar(100) references categories(category),
+item_make varchar(100) references materials(material) ON DELETE set null,
+item_category varchar(100) references categories(category) ON DELETE set null,
 item_valuation int
 );
 
@@ -47,27 +48,36 @@ employee_role VARCHAR(10) CHECK (employee_role IN ('Admin', 'Employee')),
 
 create table employee_issue_details(
 issue_id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
-employee_id UNIQUEIDENTIFIER references employee_master(employee_id),
-item_id UNIQUEIDENTIFIER references item_master(item_id),
+employee_id UNIQUEIDENTIFIER references employee_master(employee_id) on delete cascade,
+item_id UNIQUEIDENTIFIER references item_master(item_id) on delete cascade,
 issue_date date default cast(getdate() as date),
 return_date date
 );
 
 create table loan_card_master(
-loan_id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
-loan_type varchar(100) references categories(category),
-duration_in_years int
+loan_id UNIQUEIDENTIFIER DEFAULT NEWID() primary key,
+loan_type varchar(100) references categories(category) on delete cascade,
+duration_in_years int,
 );
 
 
 create table employee_card_details(
-employee_id UNIQUEIDENTIFIER references employee_master(employee_id),
-loan_id UNIQUEIDENTIFIER references loan_card_master(loan_id),
+employee_id UNIQUEIDENTIFIER references employee_master(employee_id) on delete cascade,
+loan_id UNIQUEIDENTIFIER references loan_card_master(loan_id) on delete cascade,
 card_issue_date date default cast(getdate() as date),
+PRIMARY KEY (employee_id, loan_id)
 );
 
 create table loan_request(
-employee_id UNIQUEIDENTIFIER references employee_master(employee_id),
-item_id UNIQUEIDENTIFIER references item_master(item_id),
-loan_id UNIQUEIDENTIFIER references loan_card_master(loan_id)
-)
+employee_id UNIQUEIDENTIFIER references employee_master(employee_id) on delete cascade,
+item_id UNIQUEIDENTIFIER references item_master(item_id) on delete cascade,
+loan_id UNIQUEIDENTIFIER references loan_card_master(loan_id) on delete cascade,
+PRIMARY KEY (employee_id,item_id,loan_id)
+);
+
+ALTER TABLE loan_card_master
+ADD CONSTRAINT UC_LoanType_Duration UNIQUE (loan_type, duration_in_years);
+
+insert into categories
+values ('Furniture'),
+		('Crockery');

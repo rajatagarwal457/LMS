@@ -8,9 +8,9 @@ namespace LMS.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        private readonly LmsContext _db;
+        private readonly Lms3Context _db;
 
-        public TestController(LmsContext db)
+        public TestController(Lms3Context db)
         {
             _db = db;
         }

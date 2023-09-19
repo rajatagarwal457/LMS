@@ -8,9 +8,9 @@ namespace LMS.Data
 {
     public class EmployeeProvider : IEmployeeProvider
     {
-        private readonly LmsContext _db;
+        private readonly Lms3Context _db;
 
-        public EmployeeProvider(LmsContext db)
+        public EmployeeProvider(Lms3Context db)
         {
             _db = db;
         }
@@ -25,8 +25,8 @@ namespace LMS.Data
         {
             try
             {
-                _db.EmployeeCredentials.Add(e);
-                _db.SaveChanges();
+                //_db.EmployeeCredentials.Add(e);
+                //_db.SaveChanges();
                 _db.EmployeeMasters.Add(e);
                 _db.SaveChanges();
                 return true;
@@ -44,7 +44,7 @@ namespace LMS.Data
                 var query1 = from item in _db.ItemMasters
                               join issue in _db.EmployeeIssueDetails
                               on item.ItemId equals issue.ItemId
-                              where issue.EmployeeId == id
+                              where issue.EmployeeId.ToString() == id
                               select item;
 
                 List<ItemMaster> _items = query1.ToList();

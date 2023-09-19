@@ -5,15 +5,17 @@ namespace LMS.Data
 {
     public class AdminLoanCardManagementProvider : IAdminLoanCardManagementProvider
     {
-        private readonly LmsContext _context;
+        private readonly Lms3Context _context;
 
-        public AdminLoanCardManagementProvider(LmsContext context)
+        public AdminLoanCardManagementProvider(Lms3Context context)
         {
             _context = context;
         }
         public async Task<LoanCardMaster> GetLoanCardByIdAsync(string loanId)
         {
-            return await _context.LoanCardMasters.FindAsync(loanId);
+            Guid convLoanId;
+            Guid.TryParse(loanId, out convLoanId);
+            return await _context.LoanCardMasters.FindAsync(convLoanId);
         }
         public async Task AddLoanCardAsync(LoanCardMaster loanCard)
         {
@@ -32,14 +34,16 @@ namespace LMS.Data
 
         public async Task DeleteLoanCardAsync(string loanId)
         {
-            var _loancard = await _context.LoanCardMasters.FindAsync(loanId);
+            Guid convLoanId;
+            Guid.TryParse(loanId, out convLoanId);
+            var _loancard = await _context.LoanCardMasters.FindAsync(convLoanId);
 
             var sqlQuery = @"select * from employee_card_details as e " +
                 "where e.loan_id = {0};";
 
 
             var _employeeCardDetails = await _context.EmployeeCardDetails
-                                               .FromSqlRaw(sqlQuery,loanId)
+                                               .FromSqlRaw(sqlQuery, convLoanId)
                                                .ToListAsync();
             if (_employeeCardDetails != null)
             {

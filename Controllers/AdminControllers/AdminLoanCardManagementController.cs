@@ -15,11 +15,11 @@ namespace LMS.Controllers
         {
             _service = service;
         }
-        [HttpPost]
+        [HttpPost("AddLoanCard")]
         public async Task<ActionResult<LoanCardMaster>> AddLoanCardAsync(LoanCardMaster loanCard)
         {
             await _service.AddLoanCardAsync(loanCard);
-            var _loanCard = await _service.GetLoanCardByIdAsync(loanCard.LoanId);
+            var _loanCard = await _service.GetLoanCardByIdAsync(loanCard.LoanId.ToString());
             if (_loanCard==null) 
             {
                 return BadRequest(loanCard);
@@ -27,13 +27,13 @@ namespace LMS.Controllers
             return Ok(_loanCard);
                    
         }
-        [HttpGet]
+        [HttpGet("GetAllLoans")]
         public async Task<ActionResult<List<LoanCardMaster>>> GetAllLoanCardsAsync()
         { 
             var _loancards = await _service.GetAllLoanCardsAsync();
             return Ok(_loancards);
         }
-        [HttpPut("{loanId}")]
+        [HttpPut("UpdateLoanCard/{loanId}")]
         public async Task<IActionResult> UpdateLoanCard(string loanId, LoanCardMaster updatedLoanCard)
         {
             try
@@ -46,11 +46,11 @@ namespace LMS.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("{loanId}")]
+        [HttpDelete("DeleteLoanCard/{loanId}")]
         public async Task<IActionResult> DeleteLoanCardAsync(string loanId)
         {
             await _service.DeleteLoanCardAsync(loanId);
-            return NoContent();
+            return Ok();
         }
     }
 }

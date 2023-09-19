@@ -19,7 +19,11 @@ public partial class EmployeeMaster
 
     public DateTime? DateOfJoining { get; set; }
 
+    public virtual ICollection<EmployeeCardDetail> EmployeeCardDetails { get; set; } = new List<EmployeeCardDetail>();
+
     public virtual ICollection<EmployeeCredential> EmployeeCredentials { get; set; } = new List<EmployeeCredential>();
 
     public virtual ICollection<EmployeeIssueDetail> EmployeeIssueDetails { get; set; } = new List<EmployeeIssueDetail>();
+
+    public virtual ICollection<LoanRequest> LoanRequests { get; set; } = new List<LoanRequest>();
 }

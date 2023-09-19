@@ -1,12 +1,12 @@
 ﻿using LMS.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LMS.Data
+namespace LMS.Repository
 {
-    public class ItemsPurchasedProvider : IItemsPurchasedProvider
+    public class EmployeeManagementProvider : IEmployeeManagementProvider
     {
-        private readonly LmsContext _context;
-        public ItemsPurchasedProvider(LmsContext context) 
+        private readonly Lms3Context _context;
+        public EmployeeManagementProvider(Lms3Context context)
         {
             _context = context;
         }
@@ -24,6 +24,16 @@ namespace LMS.Data
             return await _context.ItemPurchaseDtos
                 .FromSqlRaw(sqlQuery, employeeId)
                 .ToListAsync();
+        }
+        public async Task<List<LoanCardMaster>> GetLoanCardsByEmployeeIdAsync(string employeeId)
+        {
+            // Query the database to retrieve loan card details for the given employee
+            var loanCards = await _context.EmployeeCardDetails
+                .Where(e => e.EmployeeId.ToString() == employeeId)
+                .Select(e => e.Loan)
+                .ToListAsync();
+
+            return loanCards;
         }
     }
 }
