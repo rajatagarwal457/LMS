@@ -10,4 +10,6 @@ public partial class Category
     public virtual ICollection<ItemMaster> ItemMasters { get; set; } = new List<ItemMaster>();
 
     public virtual ICollection<LoanCardMaster> LoanCardMasters { get; set; } = new List<LoanCardMaster>();
+
+    public virtual ICollection<Material> Materials { get; set; } = new List<Material>();
 }

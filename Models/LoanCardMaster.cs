@@ -5,7 +5,7 @@ namespace LMS.Models;
 
 public partial class LoanCardMaster
 {
-    public string LoanId { get; set; } = null!;
+    public Guid LoanId { get; set; }
 
     public string? LoanType { get; set; }
 

@@ -21,7 +21,7 @@ namespace LMS.Data
         {
             // Query the database to retrieve loan card details for the given employee
             var loanCards = await _context.EmployeeCardDetails
-                .Where(e => e.EmployeeId == employeeId)
+                .Where(e => e.EmployeeId.ToString() == employeeId)
                 .Select(e => e.Loan)
                 .ToListAsync();
 

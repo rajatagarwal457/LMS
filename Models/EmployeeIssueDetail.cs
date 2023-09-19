@@ -5,11 +5,11 @@ namespace LMS.Models;
 
 public partial class EmployeeIssueDetail
 {
-    public string IssueId { get; set; } = null!;
+    public Guid IssueId { get; set; }
 
-    public string? EmployeeId { get; set; }
+    public Guid? EmployeeId { get; set; }
 
-    public string? ItemId { get; set; }
+    public Guid? ItemId { get; set; }
 
     public DateTime? IssueDate { get; set; }
 

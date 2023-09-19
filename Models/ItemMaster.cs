@@ -5,7 +5,7 @@ namespace LMS.Models;
 
 public partial class ItemMaster
 {
-    public string ItemId { get; set; } = null!;
+    public Guid ItemId { get; set; }
 
     public string? IssueStatus { get; set; }
 

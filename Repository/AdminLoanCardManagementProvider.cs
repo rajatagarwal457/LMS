@@ -33,6 +33,18 @@ namespace LMS.Data
         public async Task DeleteLoanCardAsync(string loanId)
         {
             var _loancard = await _context.LoanCardMasters.FindAsync(loanId);
+
+            var sqlQuery = @"select * from employee_card_details as e " +
+                "where e.loan_id = {0};";
+
+
+            var _employeeCardDetails = await _context.EmployeeCardDetails
+                                               .FromSqlRaw(sqlQuery,loanId)
+                                               .ToListAsync();
+            if (_employeeCardDetails != null)
+            {
+                _context.EmployeeCardDetails.RemoveRange(_employeeCardDetails);
+            }
             if (_loancard != null) 
             {
                 _context.LoanCardMasters.Remove(_loancard);

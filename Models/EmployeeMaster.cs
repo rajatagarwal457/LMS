@@ -5,7 +5,7 @@ namespace LMS.Models;
 
 public partial class EmployeeMaster
 {
-    public string EmployeeId { get; set; } = null!;
+    public Guid EmployeeId { get; set; }
 
     public string EmployeeName { get; set; } = null!;
 
@@ -19,7 +19,7 @@ public partial class EmployeeMaster
 
     public DateTime? DateOfJoining { get; set; }
 
-    public virtual EmployeeCredential Employee { get; set; } = null!;
+    public virtual ICollection<EmployeeCredential> EmployeeCredentials { get; set; } = new List<EmployeeCredential>();
 
     public virtual ICollection<EmployeeIssueDetail> EmployeeIssueDetails { get; set; } = new List<EmployeeIssueDetail>();
 }
