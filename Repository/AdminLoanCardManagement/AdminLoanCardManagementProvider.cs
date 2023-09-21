@@ -19,7 +19,7 @@ namespace LMS.Data
         }
         public async Task AddLoanCardAsync(LoanCardMaster loanCard)
         {
-            _context.LoanCardMasters.Add(loanCard);
+            await _context.LoanCardMasters.AddAsync(loanCard);
             await _context.SaveChangesAsync();
         }
         public async Task<List<LoanCardMaster>> GetAllLoanCardsAsync()
