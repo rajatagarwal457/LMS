@@ -17,6 +17,13 @@ namespace LMS.Data
             Guid.TryParse(loanId, out convLoanId);
             return await _context.LoanCardMasters.FindAsync(convLoanId);
         }
+        public async Task<LoanCardMaster> GetLoanCardByCategoryTenureAsync(string category, int tenure)
+        {
+            return await _context.LoanCardMasters
+                .Where(l => l.LoanType == category && 
+                l.DurationInYears == tenure)
+                .FirstOrDefaultAsync();
+        }
         public async Task AddLoanCardAsync(LoanCardMaster loanCard)
         {
             await _context.LoanCardMasters.AddAsync(loanCard);
