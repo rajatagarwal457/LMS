@@ -2,6 +2,7 @@ using LMS.Data;
 using LMS.Models;
 using LMS.Repository;
 using LMS.Services;
+using LMS.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,10 +19,15 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmployeeManagementService, EmployeeManagementService>();   
 builder.Services.AddScoped<IAdminLoanCardManagementService, AdminLoanCardManagementService>();
 builder.Services.AddScoped<IAdminCustomerDataManagementService, AdminCustomerDataManagementService>();
+builder.Services.AddScoped<IApplyForLoanService, ApplyForLoanService>();
+builder.Services.AddScoped<IAdminLoanRequestService, AdminLoanRequestService>();
 builder.Services.AddScoped<EmployeeProvider>();
 builder.Services.AddScoped<AdminLoanCardManagementProvider>();
 builder.Services.AddScoped<EmployeeManagementProvider>();
 builder.Services.AddScoped<AdminCustomerDataManagementProvider>();
+builder.Services.AddScoped<ItemMasterProvider>();
+builder.Services.AddScoped<LoanRequestProvider>();
+builder.Services.AddScoped<AdminLoanRequestListProvider>();
 
 var app = builder.Build();
 

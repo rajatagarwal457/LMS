@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LMS.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Models;
@@ -33,15 +34,20 @@ public partial class Lms3Context : DbContext
 
     public virtual DbSet<Material> Materials { get; set; }
 
-    public virtual DbSet<ItemPurchaseDto> ItemPurchaseDtos { get; set; }
+    public virtual DbSet<ItemPurchaseDto>ItemPurchaseDtos { get; set; }
 
+    public virtual DbSet<LoanApplicationDto> LoanApplications { get; set; }
+
+    public virtual DbSet<LoanRequestDto> LoanRequestDtos { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=WINDOWS-BVQNF6J;Database=LMS3;Trusted_Connection=True;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<LoanRequestDto>().HasNoKey();
         modelBuilder.Entity<ItemPurchaseDto>().HasNoKey();
+        modelBuilder.Entity<LoanApplicationDto>().HasNoKey();
         modelBuilder.Entity<Category>(entity =>
         {
             entity.HasKey(e => e.Category1).HasName("PK__categori__F7F53CC38DEB8C89");
@@ -251,10 +257,15 @@ public partial class Lms3Context : DbContext
 
         modelBuilder.Entity<LoanRequest>(entity =>
         {
-            entity.HasKey(e => new { e.EmployeeId, e.ItemId, e.LoanId }).HasName("PK__loan_req__55AFDCC08745492A");
+            entity.HasKey(e => e.RequestId);
 
             entity.ToTable("loan_request");
 
+            entity.HasIndex(e => new { e.EmployeeId, e.ItemId }, "UC_EmployeeItem").IsUnique();
+
+            entity.Property(e => e.RequestId)
+                .HasDefaultValueSql("(newid())")
+                .HasColumnName("request_id");
             entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
             entity.Property(e => e.ItemId).HasColumnName("item_id");
             entity.Property(e => e.LoanId).HasColumnName("loan_id");

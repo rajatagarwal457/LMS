@@ -11,6 +11,8 @@ public partial class LoanRequest
 
     public Guid LoanId { get; set; }
 
+    public Guid RequestId { get; set; }
+
     public virtual EmployeeMaster Employee { get; set; } = null!;
 
     public virtual ItemMaster Item { get; set; } = null!;
