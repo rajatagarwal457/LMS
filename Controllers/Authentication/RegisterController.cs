@@ -14,6 +14,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Controllers
 {
@@ -28,18 +29,16 @@ namespace LMS.Controllers
             _authService=authService;
         }
         [AllowAnonymous]
-        [HttpPost]
-        public IActionResult RegisterEmployee(EmployeeMaster e)
+        [HttpPost("RegisterEmployeeCredential")]
+        public async Task<ActionResult> RegisterEmployeeCredential(EmployeeCredential employeeCredential)
         {
-            var res = _authService.RegisterEmployee(e);
-            if (res)
+            await _authService.RegisterEmployeeCredential(employeeCredential);
+            /*var _employeeCredential = await _authService.GetEmployeeByIdAsync(employeeCredential.EmployeeId.ToString());
+            if (_employeeCredential==null)
             {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
+                return BadRequest(employeeCredential);
+            }*/
+            return Ok();
         }
     }
 }

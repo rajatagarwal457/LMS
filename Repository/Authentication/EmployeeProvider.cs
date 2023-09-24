@@ -1,4 +1,6 @@
 ﻿using LMS.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +56,18 @@ namespace LMS.Data
             {
                 return new List<ItemMaster>();
             }
+        }
+        public async Task RegisterEmployeeCredential(EmployeeCredential employeeCredential)
+        {
+            await _db.EmployeeCredentials.AddAsync(employeeCredential);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<EmployeeCredential> GetEmployeeByIdAsync(string employeeId)
+        {
+            Guid convEmployeeId;
+            Guid.TryParse(employeeId, out convEmployeeId);
+            return await _db.EmployeeCredentials.FindAsync(convEmployeeId);
         }
     }
 }

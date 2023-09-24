@@ -69,5 +69,16 @@ namespace LMS.Services
         {
             return _employeeDataProvider.RegisterEmployee(e); 
         }
+
+        public async Task RegisterEmployeeCredential (EmployeeCredential employeeCredential)
+        {
+            await _employeeDataProvider.RegisterEmployeeCredential(employeeCredential);
+        }
+
+        public async Task<EmployeeCredential> GetEmployeeByIdAsync(string employeeId)
+        {
+            return await _employeeDataProvider.GetEmployeeByIdAsync(employeeId);
+        }
+
     }
 }
