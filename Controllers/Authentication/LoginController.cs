@@ -38,7 +38,7 @@ namespace LMS.Controllers
             {
                 var tokenString = _authService.GenerateJSONWebToken(employee);
 
-                response = Ok(new LoginResponse { token = tokenString, User_Id = login.Username, Role=employee.EmployeeRole });
+                response = Ok(new LoginResponse { token = tokenString, User_Id = login.Username, Role=employee.EmployeeRole, EmployeeId=employee.EmployeeId.ToString() });
             }
 
             return response;

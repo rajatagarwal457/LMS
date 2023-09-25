@@ -20,7 +20,7 @@ namespace LMS.Data
         public EmployeeCredential GetEmployeeDetail(EmployeeViewModel login)
         {
             //return users.SingleOrDefault(x => x.EmployeeId == login.Username && x.EmployeePassword == login.Password);
-            return _db.EmployeeCredentials.SingleOrDefault(x => x.EmployeeEmail == login.Username && x.EmployeePassword == login.Password);
+            return _db.EmployeeCredentials.SingleOrDefault(x => x.EmployeeEmail == login.Username && x.EmployeePassword == login.Password );
         }
 
         public Boolean RegisterEmployee(EmployeeMaster e)
