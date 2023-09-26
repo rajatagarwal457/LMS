@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O6DJQlqIJBTZrH35+XXnNdOXZVkXeKlWNsSrSpt9qxJRmFCvGcB8n7suk6R36Go5Ry7m1nRI2LvnTfOizDuXJQ==",
+  "dgSpecHash": "3/kHLZdNk8ksAoC7nqanlppJKeGkPsJNHJCDLHWDZEtc3Icl3Y0RLzTAbTeeNRZNL+sWRepqgGFhDeSj4A9siQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\Project\\lms1\\LMS.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\Project\\lms2\\LMS\\LMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
