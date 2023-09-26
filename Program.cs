@@ -22,6 +22,7 @@ builder.Services.AddScoped<IAdminCustomerDataManagementService, AdminCustomerDat
 builder.Services.AddScoped<IApplyForLoanService, ApplyForLoanService>();
 builder.Services.AddScoped<IAdminLoanRequestService, AdminLoanRequestService>();
 builder.Services.AddScoped<IItemDataManagementService,ItemDataManagementService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<EmployeeProvider>();
 builder.Services.AddScoped<AdminLoanCardManagementProvider>();
 builder.Services.AddScoped<EmployeeManagementProvider>();
@@ -29,6 +30,7 @@ builder.Services.AddScoped<AdminCustomerDataManagementProvider>();
 builder.Services.AddScoped<ItemMasterProvider>();
 builder.Services.AddScoped<LoanRequestProvider>();
 builder.Services.AddScoped<AdminLoanRequestListProvider>();
+builder.Services.AddScoped<CategoryProvider>();
 
 var app = builder.Build();
 
