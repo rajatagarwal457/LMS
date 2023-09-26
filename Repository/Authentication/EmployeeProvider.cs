@@ -1,6 +1,4 @@
 ﻿using LMS.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +18,7 @@ namespace LMS.Data
         public EmployeeCredential GetEmployeeDetail(EmployeeViewModel login)
         {
             //return users.SingleOrDefault(x => x.EmployeeId == login.Username && x.EmployeePassword == login.Password);
-            return _db.EmployeeCredentials.SingleOrDefault(x => x.EmployeeEmail == login.Username && x.EmployeePassword == login.Password );
+            return _db.EmployeeCredentials.SingleOrDefault(x => x.EmployeeEmail == login.Username && x.EmployeePassword == login.Password);
         }
 
         public Boolean RegisterEmployee(EmployeeMaster e)
@@ -56,18 +54,6 @@ namespace LMS.Data
             {
                 return new List<ItemMaster>();
             }
-        }
-        public async Task RegisterEmployeeCredential(EmployeeCredential employeeCredential)
-        {
-            await _db.EmployeeCredentials.AddAsync(employeeCredential);
-            await _db.SaveChangesAsync();
-        }
-
-        public async Task<EmployeeCredential> GetEmployeeByIdAsync(string employeeId)
-        {
-            Guid convEmployeeId;
-            Guid.TryParse(employeeId, out convEmployeeId);
-            return await _db.EmployeeCredentials.FindAsync(convEmployeeId);
         }
     }
 }

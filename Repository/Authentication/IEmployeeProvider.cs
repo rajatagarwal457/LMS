@@ -10,8 +10,5 @@ namespace LMS.Data
     {
         public EmployeeCredential GetEmployeeDetail(EmployeeViewModel login);
         public Boolean RegisterEmployee(EmployeeMaster e);
-
-        Task RegisterEmployeeCredential(EmployeeCredential employeeCredential);
-        Task<EmployeeCredential> GetEmployeeByIdAsync(string employeeId);
     }
 }

@@ -10,6 +10,5 @@ namespace LMS.Models
         public string token { get; set; }
         public string User_Id { get; set; }
         public string Role { get; set; }
-        public string EmployeeId { get; set; }
     }
 }

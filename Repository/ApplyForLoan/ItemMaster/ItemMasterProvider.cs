@@ -28,7 +28,7 @@ namespace LMS.Data
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
-            _context.ItemMasters.Add(item);
+            _context.ItemMasters.AddAsync(item);
             await _context.SaveChangesAsync();
             return item.ItemId;
         }
@@ -38,7 +38,7 @@ namespace LMS.Data
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
-            _context.ItemMasters.Update(item);
+            _context.Entry(item).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 

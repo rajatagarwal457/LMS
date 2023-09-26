@@ -78,6 +78,19 @@ PRIMARY KEY (employee_id,item_id,loan_id)
 ALTER TABLE loan_card_master
 ADD CONSTRAINT UC_LoanType_Duration UNIQUE (loan_type, duration_in_years);
 
-insert into categories
-values ('Furniture'),
-		('Crockery');
+ALTER TABLE loan_request
+ADD request_id UNIQUEIDENTIFIER DEFAULT NEWID();
+
+ALTER TABLE loan_request
+ALTER COLUMN request_id UNIQUEIDENTIFIER NOT NULL;
+
+ALTER TABLE loan_request
+ADD CONSTRAINT UC_EmployeeItem UNIQUE (employee_id, item_id);
+
+ALTER TABLE loan_request
+DROP CONSTRAINT PK__loan_request;
+
+ALTER TABLE loan_request
+ADD CONSTRAINT PK_loan_request PRIMARY KEY (request_id);
+
+

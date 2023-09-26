@@ -21,6 +21,7 @@ builder.Services.AddScoped<IAdminLoanCardManagementService, AdminLoanCardManagem
 builder.Services.AddScoped<IAdminCustomerDataManagementService, AdminCustomerDataManagementService>();
 builder.Services.AddScoped<IApplyForLoanService, ApplyForLoanService>();
 builder.Services.AddScoped<IAdminLoanRequestService, AdminLoanRequestService>();
+builder.Services.AddScoped<IItemDataManagementService,ItemDataManagementService>();
 builder.Services.AddScoped<EmployeeProvider>();
 builder.Services.AddScoped<AdminLoanCardManagementProvider>();
 builder.Services.AddScoped<EmployeeManagementProvider>();
