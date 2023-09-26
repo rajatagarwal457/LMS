@@ -21,14 +21,17 @@ namespace LMS.Data
             return _db.EmployeeCredentials.SingleOrDefault(x => x.EmployeeEmail == login.Username && x.EmployeePassword == login.Password);
         }
 
-        public Boolean RegisterEmployee(EmployeeMaster e)
+        public Boolean RegisterEmployee(string employeeId, EmployeeCredential e)
         {
             try
             {
-                //_db.EmployeeCredentials.Add(e);
+                Guid ConvEmployeeId;
+                Guid.TryParse(employeeId, out ConvEmployeeId);
+                e.EmployeeId = ConvEmployeeId;
+                _db.EmployeeCredentials.AddAsync(e);
+                _db.SaveChangesAsync();
+                //_db.EmployeeMasters.Add(e);
                 //_db.SaveChanges();
-                _db.EmployeeMasters.Add(e);
-                _db.SaveChanges();
                 return true;
             } 
             catch

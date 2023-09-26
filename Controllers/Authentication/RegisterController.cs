@@ -28,10 +28,10 @@ namespace LMS.Controllers
             _authService=authService;
         }
         [AllowAnonymous]
-        [HttpPost]
-        public IActionResult RegisterEmployee(EmployeeMaster e)
+        [HttpPost("{employeeId}")]
+        public IActionResult RegisterEmployee(string employeeId,EmployeeCredential e)
         {
-            var res = _authService.RegisterEmployee(e);
+            var res = _authService.RegisterEmployee(employeeId,e);
             if (res)
             {
                 return Ok();
