@@ -2,7 +2,7 @@
 {
     public class ItemPurchaseDto
     {
-        public string IssueId { get; set; }
+        public Guid IssueId { get; set; }
         public string ItemDescription { get; set; }
         public string ItemMake { get; set; }
         public string ItemCategory { get; set; }

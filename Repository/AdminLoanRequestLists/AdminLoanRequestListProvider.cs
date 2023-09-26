@@ -51,6 +51,7 @@ namespace LMS.Data
                                     .FirstOrDefaultAsync(lr => lr.RequestId==ConvRequestId);
             if (loanRequest == null)
             {
+                Console.WriteLine("this line1");
                 return false; // Request not found
             }
             var _tenure = loanRequest.Loan.DurationInYears;
@@ -87,11 +88,11 @@ namespace LMS.Data
                 if (itemMaster != null)
                 {
                     itemMaster.IssueStatus = "issued"; // Update the status as needed
-                    _context.ItemMasters.Update(itemMaster);
+                    _context.Entry(itemMaster).State = EntityState.Modified;
                 }
 
                 // Remove the loan request record
-                _context.LoanRequests.Remove(loanRequest);
+                //_context.LoanRequests.Remove(loanRequest);
 
                 // Save changes to the database
                 await _context.SaveChangesAsync();
@@ -101,6 +102,7 @@ namespace LMS.Data
             }
             catch (Exception)
             {
+                Console.WriteLine("This is line2");
                 transaction.Rollback();
                 return false; // Approval failed
             }
