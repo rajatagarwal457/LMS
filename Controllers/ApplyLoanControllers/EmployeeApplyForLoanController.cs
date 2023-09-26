@@ -14,13 +14,18 @@ namespace LMS.Controllers
         {
             _service = service;
         }
-        [HttpPost("ApplyForLoan")]
+        [HttpPost("ApplyForLoan/{employeeId}")]
         public async Task<IActionResult> ApplyLoanAsync(LoanApplicationDto application,string employeeId)
         {
             try 
             {
                 var _requestId =await _service.ApplyForLoanAsync(application, employeeId);
-                return Ok(_requestId);
+                if(_requestId != null) 
+                {
+                    return Ok(_requestId); 
+                }
+                return BadRequest(application);
+                
             }
             catch (Exception ex) 
             {

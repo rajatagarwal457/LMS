@@ -22,6 +22,10 @@ namespace LMS.Services
             var _category = application.ItemCategory;
             var _tenure =application.Tenure;
             var _loanCard = await _loanCardProvider.GetLoanCardByCategoryTenureAsync(_category, _tenure);
+            if (_loanCard==null)
+            {
+                return null;
+            }
             var _loanId = _loanCard.LoanId;
             //create a record in item master
             var _item = new ItemMaster
