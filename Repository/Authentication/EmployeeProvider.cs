@@ -36,6 +36,18 @@ namespace LMS.Data
                 return false;
             }
         }
+        public async Task RegisterEmployeeCredential(EmployeeCredential employeeCredential)
+        {
+            await _db.EmployeeCredentials.AddAsync(employeeCredential);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<EmployeeCredential> GetEmployeeByIdAsync(string employeeId)
+        {
+            Guid convEmployeeId;
+            Guid.TryParse(employeeId, out convEmployeeId);
+            return await _db.EmployeeCredentials.FindAsync(convEmployeeId);
+        }
 
         public List<ItemMaster> GetItemDetails(String id)
         {
