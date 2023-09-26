@@ -11,6 +11,8 @@ public partial class EmployeeCardDetail
 
     public DateTime? CardIssueDate { get; set; }
 
+    public Guid EmployeeCardId { get; set; }
+
     public virtual EmployeeMaster Employee { get; set; } = null!;
 
     public virtual LoanCardMaster Loan { get; set; } = null!;

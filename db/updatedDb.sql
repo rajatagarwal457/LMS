@@ -93,4 +93,14 @@ DROP CONSTRAINT PK__loan_request;
 ALTER TABLE loan_request
 ADD CONSTRAINT PK_loan_request PRIMARY KEY (request_id);
 
+ALTER TABLE employee_card_details
+ADD employee_card_id UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL;
+
+ALTER TABLE employee_card_details
+DROP CONSTRAINT PK__employee__9F3172FD1203A131;
+
+ALTER TABLE employee_card_details
+ADD CONSTRAINT PK_EMPLOYEE_CARD_DETAILS PRIMARY KEY(employee_card_id);
+
+
 

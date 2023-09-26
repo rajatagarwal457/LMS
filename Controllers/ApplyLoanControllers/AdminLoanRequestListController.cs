@@ -27,7 +27,12 @@ namespace LMS.Controllers.ApplyLoanControllers
         {
             try
             {
-                await _service.ApproveLoanRequestAsync(requestId);
+                var _response = await _service.ApproveLoanRequestAsync(requestId);
+                if (!_response)
+                {
+                    return BadRequest("Unable to approve");
+                }
+
                 return Ok("Request Approved");
             }
             catch (Exception ex)
@@ -41,7 +46,11 @@ namespace LMS.Controllers.ApplyLoanControllers
         {
             try
             {
-                await _service.DeclineLoanRequestAsync(requestId);
+                var _response = await _service.DeclineLoanRequestAsync(requestId);
+                if (!_response)
+                {
+                    return BadRequest("Unable to decline");
+                }
                 return Ok("Request Declined");
             }
             catch (Exception ex)

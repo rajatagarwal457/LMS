@@ -20,9 +20,11 @@ namespace LMS.Repository
             INNER JOIN item_master i ON e.item_id = i.item_id
             WHERE e.employee_id = {0}";
 
+            Guid ConvemployeeId;
+            Guid.TryParse(employeeId, out ConvemployeeId);
             // Use FromSqlRaw to execute the raw SQL query
             return await _context.ItemPurchaseDtos
-                .FromSqlRaw(sqlQuery, employeeId)
+                .FromSqlRaw(sqlQuery, ConvemployeeId)
                 .ToListAsync();
         }
         public async Task<List<LoanCardMaster>> GetLoanCardsByEmployeeIdAsync(string employeeId)

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\backend_bootcamp\\backend_26sept\\LMS\\LMS.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\Project\\lms3\\LMS.csproj": {}
   },
   "projects": {
-    "C:\\backend_bootcamp\\backend_26sept\\LMS\\LMS.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\Project\\lms3\\LMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\backend_bootcamp\\backend_26sept\\LMS\\LMS.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\Project\\lms3\\LMS.csproj",
         "projectName": "LMS",
-        "projectPath": "C:\\backend_bootcamp\\backend_26sept\\LMS\\LMS.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\Project\\lms3\\LMS.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\backend_bootcamp\\backend_26sept\\LMS\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\Project\\lms3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -12,7 +12,5 @@ namespace LMS.Services
         public Boolean RegisterEmployee(EmployeeMaster e);
         public string GenerateJSONWebToken(EmployeeCredential employeeInfo);
         public EmployeeCredential AuthenticateEmployee(EmployeeViewModel login);
-        Task RegisterEmployeeCredential(EmployeeCredential employeeCredential);
-        Task<EmployeeCredential> GetEmployeeByIdAsync(string employeeId);
     }
 }

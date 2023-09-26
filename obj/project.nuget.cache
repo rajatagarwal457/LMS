@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "umUFGVLNGWMoTHJlXT0LbAMNWpGvEGcGpX7/rMxkZAPmUCXgDTsZwHK3FnxavMkocS+UApSC5UakJ/vnRHUZTA==",
+  "dgSpecHash": "X/31ZlfHW/bYjoTDTA+XdAwfiZ0Na8Pe0fQC6Zcy0a2GA+SU1GIObd4A/HR0wI9B1kfuarvrd1TFvnkIfAwV6A==",
   "success": true,
-  "projectFilePath": "C:\\backend_bootcamp\\backend_26sept\\LMS\\LMS.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\Project\\lms3\\LMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

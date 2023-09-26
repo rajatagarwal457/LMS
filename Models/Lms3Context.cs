@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using LMS.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Models;
@@ -33,8 +32,7 @@ public partial class Lms3Context : DbContext
     public virtual DbSet<LoanRequest> LoanRequests { get; set; }
 
     public virtual DbSet<Material> Materials { get; set; }
-
-    public virtual DbSet<ItemPurchaseDto>ItemPurchaseDtos { get; set; }
+    public virtual DbSet<ItemPurchaseDto> ItemPurchaseDtos { get; set; }
 
     public virtual DbSet<LoanApplicationDto> LoanApplications { get; set; }
 
@@ -45,6 +43,7 @@ public partial class Lms3Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         modelBuilder.Entity<LoanRequestDto>().HasNoKey();
         modelBuilder.Entity<ItemPurchaseDto>().HasNoKey();
         modelBuilder.Entity<LoanApplicationDto>().HasNoKey();
@@ -85,16 +84,19 @@ public partial class Lms3Context : DbContext
 
         modelBuilder.Entity<EmployeeCardDetail>(entity =>
         {
-            entity.HasKey(e => new { e.EmployeeId, e.LoanId }).HasName("PK__employee__9F3172FD1203A131");
+            entity.HasKey(e => e.EmployeeCardId).HasName("PK_EMPLOYEE_CARD_DETAILS");
 
             entity.ToTable("employee_card_details");
 
-            entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-            entity.Property(e => e.LoanId).HasColumnName("loan_id");
+            entity.Property(e => e.EmployeeCardId)
+                .HasDefaultValueSql("(newid())")
+                .HasColumnName("employee_card_id");
             entity.Property(e => e.CardIssueDate)
                 .HasDefaultValueSql("(CONVERT([date],getdate()))")
                 .HasColumnType("date")
                 .HasColumnName("card_issue_date");
+            entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+            entity.Property(e => e.LoanId).HasColumnName("loan_id");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.EmployeeCardDetails)
                 .HasForeignKey(d => d.EmployeeId)
