@@ -22,7 +22,7 @@ namespace LMS.Controllers.ApplyLoanControllers
             return Ok(pendingRequests);
         }
 
-        [HttpPost("Approve")]
+        [HttpPost("Approve/{requestId}")]
         public async Task<IActionResult> ApproveLoanRequestAsync(string requestId)
         {
             try
@@ -41,7 +41,7 @@ namespace LMS.Controllers.ApplyLoanControllers
             }
         }
 
-        [HttpPost("Decline")]
+        [HttpPost("Decline/{requestId}")]
         public async Task<IActionResult> DeclineLoanRequestAsync(string requestId)
         {
             try
